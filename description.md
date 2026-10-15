@@ -467,11 +467,10 @@ A felhasználói fiókok alapadatait tárolja.
 | ----------------- | --------------------- | --------------------------- |
 | id                | BIGINT, PK            | Egyedi azonosító            |
 | email             | VARCHAR, UNIQUE       | Email cím                   |
-| username          | VARCHAR, UNIQUE       | Felhasználónév              |
 | password          | VARCHAR, NULL         | Titkosított jelszó          |
-| google_id         | VARCHAR, NULL, UNIQUE | Google-fiók azonosító       |
-| email_verified_at | TIMESTAMP, NULL       | Email-megerősítés időpontja |
-| is_active         | BOOLEAN               | Fiók állapota               |
+| google_id         | VARCHAR, NULL, UNIQUE | Google-fiók azonosító       |  ???
+| email_verified_at | TIMESTAMP, NULL       | Email-megerősítés időpontja |  -- 1 hét után törli a profil létrehozást, ha nincs megerősítve
+| is_active         | BOOLEAN               | Fiók állapota               |  
 | created_at        | TIMESTAMP             | Létrehozás időpontja        |
 | updated_at        | TIMESTAMP             | Módosítás időpontja         |
 
@@ -481,15 +480,19 @@ A felhasználói fiókok alapadatait tárolja.
 
 A rendszerben elérhető szerepköröket tárolja.
 
-| Mező | Típus           |
-| ---- | --------------- |
-| id   | BIGINT, PK      |
-| name | VARCHAR, UNIQUE |
+| Mező            | Típus           |
+| ----------------| --------------- |
+| id              | BIGINT, PK      |  
+| name            | VARCHAR, UNIQUE |
+| Avalability     | boolean         |     -- 2 elérhető regisztrálásnál: advertiser vagy creator
 
 Tárolt szerepkörök:
 
 - CONTENT_CREATOR;
 - ADVERTISER;
+- video_editor
+- video_maker
+- other
 - MODERATOR;
 - ADMIN.
 
@@ -517,12 +520,12 @@ A felhasználók profiladatait tárolja.
 | Mező         | Típus             |
 | ------------ | ----------------- |
 | user_id      | PK, FK → users.id |
-| display_name | VARCHAR           |
+| full_name    | VARCHAR           |
 | bio          | TEXT              |
 | city         | VARCHAR           |
 | phone        | VARCHAR, NULL     |
 | avatar_url   | VARCHAR, NULL     |
-| website_url  | VARCHAR, NULL     |
+| socials_id   | FK  VARCHAR, NULL |
 | created_at   | TIMESTAMP         |
 | updated_at   | TIMESTAMP         |
 
@@ -532,31 +535,7 @@ Kapcsolat:
 
 ---
 
-## 5.5. specializations
-
-A tartalomgyártói kategóriákat tárolja.
-
-| Mező | Típus           |
-| ---- | --------------- |
-| id   | BIGINT, PK      |
-| name | VARCHAR, UNIQUE |
-
----
-
-## 5.6. user_specializations
-
-A tartalomgyártók és kategóriák közötti kapcsolatot tárolja.
-
-| Mező              | Típus                   |
-| ----------------- | ----------------------- |
-| user_id           | FK → users.id           |
-| specialization_id | FK → specializations.id |
-
-Kapcsolat:
-
-`users N — M specializations`
-
----
+## socials
 
 ## 5.7. advertisers
 
