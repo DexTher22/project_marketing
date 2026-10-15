@@ -1,33 +1,36 @@
-<h1 class="text-center">Regisztráció</h1>
-
-<form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
-    <div>
-        <label for="email" class="form-label">E-mail cím
-            @if(registerForm.get('email')?.hasError('required') && registerForm.get('email')?.touched){
-            <span class="badge text-bg-danger">Az e-mail cím megadása kötelező!</span>
-            }
-        </label>
-        <input type="text" id="email" class="form-control" formControlName="email">
+<div class="register-wrapper">    
+    <div class="register-form">
+        <h2 class="text-center">Regisztráció</h2>
+        <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+            <div>
+                <label for="email" class="form-label">E-mail cím
+                    @if(registerForm.get('email')?.hasError('required') && registerForm.get('email')?.touched){
+                    <span class="badge text-bg-danger">Az e-mail cím megadása kötelező!</span>
+                    }
+                </label>
+                <input type="text" id="email" class="form-control" formControlName="email">
+            </div>
+            <div>
+                <label for="password" class="form-label">Jelszó
+                    @if(registerForm.get('password')?.hasError('required') && registerForm.get('password')?.touched){
+                    <span class="badge text-bg-danger">Jelszó megadása kötelező!</span>
+                    }@else if (registerForm.get('password')?.hasError('minlength')&& registerForm.get('password')?.touched) {
+                        <span class="badge text-bg-danger">Jelszónak minimum 8 karakter hosszúnak kell lennie!</span>
+                    }
+                </label>
+                <input type="text" id="password" class="form-control" formControlName="password">
+            </div>
+            <div>
+                <label for="password_confirm" class="form-label">Jelszó megerősítése
+                    @if(registerForm.get('password_confirm')?.hasError('required') && registerForm.get('password_confirm')?.touched){
+                    <span class="badge text-bg-danger">Jelszó megerősítése kötelező!</span>
+                    }@else if(!passwordMatch() && registerForm.get('password_confirm')?.touched) {
+                    <span class="badge text-bg-danger">A jelszók nem egyeznek meg!</span>
+                    }
+                </label>
+                <input type="text" id="password_confirm" class="form-control" formControlName="password_confirm">
+            </div>
+                <div class="d-flex justify-content-center"><button class="btn btn-primary m-3">Regisztráció</button></div>
+        </form>
     </div>
-    <div>
-        <label for="password" class="form-label">Jelszó
-            @if(registerForm.get('password')?.hasError('required') && registerForm.get('password')?.touched){
-            <span class="badge text-bg-danger">Jelszó megadása kötelező!</span>
-            }@else if (registerForm.get('password')?.hasError('minlength')&& registerForm.get('password')?.touched) {
-                <span class="badge text-bg-danger">Jelszónak minimum 8 karakter hosszúnak kell lennie!</span>
-            }
-        </label>
-        <input type="text" id="password" class="form-control" formControlName="password">
-    </div>
-    <div>
-        <label for="password_confirm" class="form-label">Jelszó megerősítése
-            @if(registerForm.get('password_confirm')?.hasError('required') && registerForm.get('password_confirm')?.touched){
-            <span class="badge text-bg-danger">Jelszó megerősítése kötelező!</span>
-            }@else if(!passwordMatch() && registerForm.get('password_confirm')?.touched) {
-            <span class="badge text-bg-danger">A jelszók nem egyeznek meg!</span>
-            }
-        </label>
-        <input type="text" id="password_confirm" class="form-control" formControlName="password_confirm">
-    </div>
-    <button class="btn btn-primary mt-3 mb-3">Regisztráció</button>
-</form>
+</div>

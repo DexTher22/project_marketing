@@ -1,0 +1,1 @@
+Regisztráció oldal: e-mail, jelszó, szerepkör választása legördülő listából: tartalomgyártó,hirdető, videó_vágó, videó_forgató, egyéb - nem fog több minden megjelenni választásra, csak bejelentkezésnél más home page-re visz, majd a profil komponensen belül kell megadni további információkat.

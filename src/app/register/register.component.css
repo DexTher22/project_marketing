@@ -1,0 +1,33 @@
+.register-wrapper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.register-form{
+    width: 400px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.1);
+}
+
+.register-form h2{
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.login-form a{
+    text-decoration: none;
+}
+
+.form-group{
+    margin-bottom: 10px;
+}
+
+.form-group label{
+    display: block;
+    margin-bottom: 5px;
+}
