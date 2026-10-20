@@ -525,7 +525,6 @@ A felhasználók profiladatait tárolja.
 | city         | VARCHAR           |
 | phone        | VARCHAR, NULL     |
 | avatar_url   | VARCHAR, NULL     |
-| socials_id   | FK  VARCHAR, NULL |
 | created_at   | TIMESTAMP         |
 | updated_at   | TIMESTAMP         |
 
@@ -536,6 +535,12 @@ Kapcsolat:
 ---
 
 ## socials
+
+id  
+user_id  
+platform  
+profile_url  
+
 
 ## 5.7. advertisers
 
