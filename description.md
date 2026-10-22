@@ -490,13 +490,17 @@ Tárolt szerepkörök:
 
 - CONTENT_CREATOR;
 - ADVERTISER;
-- video_editor
-- video_maker
-- other
+
 - MODERATOR;
 - ADMIN.
 
 ---
+## specializations
+
+
+- video_editor
+- video_maker
+- other
 
 ## 5.3. user_roles
 
@@ -645,7 +649,7 @@ Az `ad_id` és `user_id` mezők együttesen egyediek.
 
 ---
 
-## 5.12. ad_moderations
+<!-- ## 5.12. ad_moderations
 
 A hirdetések moderációs előzményeit tárolja.
 
@@ -658,7 +662,7 @@ A hirdetések moderációs előzményeit tárolja.
 | reason       | TEXT, NULL    |
 | created_at   | TIMESTAMP     |
 
----
+--- -->
 
 ## 5.13. conversations
 
