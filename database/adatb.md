@@ -1,3 +1,5 @@
+??? az advertiserek lehetnek specializálva? pl. magánszemély, cég stb.  
+Mert akkor a creator_specializations lehet user_specializations és creator_id helyett user_id-t használ.
 # Adatbázis
 
 ### users
@@ -44,4 +46,3 @@
 
 ### messages
 - üzenet tartalma, küldővel és conversation_id-vel
-
