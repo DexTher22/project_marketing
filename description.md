@@ -676,7 +676,7 @@ A felhasználók közötti beszélgetéseket tárolja.
 
 ---
 
-## 5.14. conversation_participants
+## 5.14. conversation_members
 
 A beszélgetések résztvevőit tárolja.
 
@@ -721,11 +721,12 @@ A tartalomgyártók referenciaanyagait tárolja.
 | id            | BIGINT, PK    |
 | user_id       | FK → users.id |
 | title         | VARCHAR       |
-| description   | TEXT, NULL    |
-| media_type    | VARCHAR       |
-| media_url     | VARCHAR       |
-| thumbnail_url | VARCHAR, NULL |
-| created_at    | TIMESTAMP     |
+| description   | TEXT, NULL    |  
+| platform      | VARCHAR, NULL |  
+| media_url     | VARCHAR       |  
+| created_at    | TIMESTAMP     |  
+| updated_at    | TIMESTAMP     |
+<!-- | media_type    | VARCHAR       | -->
 
 Kapcsolat:
 
@@ -750,7 +751,7 @@ A nyilvános kezdőlapon megjelenő médiaanyagokat tárolja.
 
 ---
 
-## 5.18. newsletter_subscriptions
+<!-- ## 5.18. newsletter_subscriptions
 
 A hírlevélre feliratkozott email címeket tárolja.
 
@@ -764,7 +765,7 @@ A hírlevélre feliratkozott email címeket tárolja.
 | confirmed_at       | TIMESTAMP, NULL |
 | unsubscribed_at    | TIMESTAMP, NULL |
 
----
+--- -->
 
 ## 5.19. contact_messages
 
@@ -782,7 +783,7 @@ A kapcsolatfelvételi űrlapon beküldött üzeneteket tárolja.
 
 ---
 
-## 5.20. email_verification_tokens
+<!-- ## 5.20. email_verification_tokens
 
 Az email címek megerősítéséhez szükséges tokeneket tárolja.
 
@@ -794,7 +795,7 @@ Az email címek megerősítéséhez szükséges tokeneket tárolja.
 | expires_at | TIMESTAMP       |
 | used_at    | TIMESTAMP, NULL |
 
----
+--- -->
 
 ## 5.21. password_reset_tokens
 
@@ -810,7 +811,7 @@ A jelszó-visszaállításhoz szükséges tokeneket tárolja.
 
 ---
 
-## 5.22. legal_acceptances
+<!-- ## 5.22. legal_acceptances
 
 A felhasználók által elfogadott jogi dokumentumokat tárolja.
 
@@ -822,7 +823,7 @@ A felhasználók által elfogadott jogi dokumentumokat tárolja.
 | document_version | VARCHAR       |
 | accepted_at      | TIMESTAMP     |
 
----
+--- -->
 
 # 6. Az adatbázis fő kapcsolatai
 

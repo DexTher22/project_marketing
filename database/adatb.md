@@ -1,9 +1,13 @@
 ??? az advertiserek lehetnek specializálva? pl. magánszemély, cég stb.  
-Mert akkor a creator_specializations lehet user_specializations és creator_id helyett user_id-t használ.
+Mert akkor a creator_specializations lehet user_specializations és creator_id helyett user_id-t használ.  
+Ha nagyon akarunk hírlevelet elég users-be berakni egy mezőt, de amúgy felesleges az egész tábla
+
 # Adatbázis
 
+## Táblák
+
 ### users
-- alapadatok, regisztrációs szükségek
+- alapadatok, regisztrációs feltételek
 - a roles határozza meg, hogy creator / advertiser / admin / moderator
 
 ### creators  / advertisers
@@ -46,3 +50,14 @@ Mert akkor a creator_specializations lehet user_specializations és creator_id h
 
 ### messages
 - üzenet tartalma, küldővel és conversation_id-vel
+
+### showcase_media
+- A nyilvános kezdőlapon megjelenő médiaanyagokat tárolja.
+
+### contact_messages
+- nyílvános kapcsolatfelvételi üzeneteket tárolja
+
+### password_reset_tokens
+- jelszóvisszaállítás
+
+
