@@ -1,21 +1,75 @@
-<div class="login-wrapper">
-    <div class="login-form">
-        <h2>Bejelentkezés</h2>
-        <a routerLink="/">Vissza</a>
-        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-            <div class="form-group">
-                <label for="email">Email-cím</label>
-                <input type="email" class="form-control" formControlName="email" required>
-            </div>
-            <div class="form-group">
-                <label for="password">Jelszó</label>
-                <input type="password" class="form-control" formControlName="password" required>
-            </div>
-            <div>
-                <div class="d-flex justify-content-center"><button type="submit" class="btn btn-primary">Bejelentkezés</button></div>
-                <span>Új felhasználó?<a routerLink="/register" class="mx-3">Új fiók létrehozása</a></span>
-                <!-- <button type="submit" class="btn btn-secondary m-3" routerLink="/register">Regisztráció</button> -->
-            </div>
-        </form>
-    </div>
+<div class="pm-page">
+  <div class="pm-shell">
+    <header class="pm-header">
+      <div class="pm-brand"><span class="pm-mark" aria-hidden="true">PM</span>Project Marketing</div>
+      <a class="pm-link" routerLink="/"><span aria-hidden="true">←</span> Kezdőlap</a>
+    </header>
+
+    <main class="login-card" aria-labelledby="login-heading">
+      <p class="pm-kicker">Fiók</p>
+      <h1 id="login-heading">Bejelentkezés</h1>
+      <p class="login-intro">A belépés mezőit ezen a bemutatóűrlapon próbálhatod ki.</p>
+
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit(emailInput, passwordInput)">
+        <div class="login-field">
+          <label for="login-email">E-mail-cím</label>
+          <input
+            #emailInput
+            id="login-email"
+            name="email"
+            type="email"
+            autocomplete="username"
+            placeholder="pelda@example.com"
+            formControlName="email"
+            required
+            [attr.aria-invalid]="emailInvalid ? 'true' : null"
+            [attr.aria-describedby]="emailInvalid ? 'login-email-error' : null"
+          />
+          @if (emailInvalid) {
+            <p class="field-error" id="login-email-error">
+              {{ email.hasError('required') ? 'Add meg az e-mail-címed.' : 'Adj meg érvényes e-mail-címet.' }}
+            </p>
+          }
+        </div>
+
+        <div class="login-field">
+          <label for="login-password">Jelszó</label>
+          <div class="password-field">
+            <input
+              #passwordInput
+              id="login-password"
+              name="password"
+              [type]="passwordVisible ? 'text' : 'password'"
+              autocomplete="current-password"
+              formControlName="password"
+              required
+              [attr.aria-invalid]="passwordInvalid ? 'true' : null"
+              [attr.aria-describedby]="passwordInvalid ? 'login-password-error' : null"
+            />
+            <button
+              class="password-toggle"
+              type="button"
+              aria-controls="login-password"
+              [attr.aria-label]="passwordVisible ? 'Jelszó elrejtése' : 'Jelszó mutatása'"
+              (click)="passwordVisible = !passwordVisible"
+            >
+              {{ passwordVisible ? 'Elrejtés' : 'Mutatás' }}
+            </button>
+          </div>
+          @if (passwordInvalid) {
+            <p class="field-error" id="login-password-error">Add meg a jelszavadat.</p>
+          }
+        </div>
+
+        <button class="login-submit" type="submit">Bejelentkezés</button>
+        <div role="status">
+          @if (formChecked && loginForm.valid) {
+            <p class="login-feedback">Az űrlap ellenőrzése sikerült.</p>
+          }
+        </div>
+      </form>
+
+      <p class="register-link">Új vagy itt? <a class="pm-link" routerLink="/register">Fiók létrehozása</a></p>
+    </main>
+  </div>
 </div>

@@ -1,33 +1,105 @@
-.login-wrapper{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+.login-card {
+  max-inline-size: 30rem;
+  margin: clamp(0.75rem, 5vh, 3rem) auto 0;
+  padding: clamp(1.25rem, 5vw, 3rem);
+  border: 1px solid var(--pm-border);
+  border-radius: 1.25rem;
+  background: var(--pm-surface);
+  box-shadow: 0 1rem 2.5rem #172b2310;
 }
 
-.login-form{
-    width: 400px;
-    padding: 20px;
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.1);
+.login-card h1 {
+  margin-block-end: 0.75rem;
+  font-size: clamp(1.875rem, 3.7vw, 2.75rem);
+  font-weight: 750;
+  line-height: 1.12;
+  letter-spacing: -0.035em;
 }
 
-.login-form h2{
-    text-align: center;
-    margin-bottom: 10px;
+.login-intro {
+  margin-block-end: 1.75rem;
+  color: var(--pm-muted);
 }
 
-.login-form a{
-    text-decoration: none;
+.login-field {
+  display: grid;
+  gap: 0.375rem;
+  margin-block-end: 1rem;
 }
 
-.form-group{
-    margin-bottom: 10px;
+.login-field label {
+  font-weight: 650;
 }
 
-.form-group label{
-    display: block;
-    margin-bottom: 5px;
+.login-field input {
+  inline-size: 100%;
+  min-inline-size: 0;
+  min-block-size: 3rem;
+  padding: 0.625rem 0.75rem;
+  border: 1px solid #828f85;
+  border-radius: 0.5rem;
+  background: var(--pm-surface);
+  color: var(--pm-ink);
+  font-size: 1rem;
+}
+
+.login-field input[aria-invalid='true'] {
+  border-color: #a02a35;
+}
+
+.password-field {
+  position: relative;
+}
+
+.password-field input {
+  padding-inline-end: 6rem;
+}
+
+.password-toggle {
+  position: absolute;
+  inset-block: 0.25rem;
+  inset-inline-end: 0.25rem;
+  padding-inline: 0.5rem;
+  border: 0;
+  border-radius: 0.375rem;
+  background: transparent;
+  color: var(--pm-action);
+  font-size: 0.875rem;
+  font-weight: 650;
+}
+
+.password-toggle:hover {
+  background: var(--pm-canvas);
+}
+
+.field-error {
+  margin: 0;
+  color: #a02a35;
+  font-size: 0.875rem;
+}
+
+.login-submit {
+  inline-size: 100%;
+  min-block-size: 3rem;
+  padding: 0.625rem 1rem;
+  border: 0;
+  border-radius: 0.5rem;
+  background: var(--pm-action);
+  color: white;
+  font-weight: 700;
+}
+
+.login-submit:hover {
+  background: var(--pm-forest);
+}
+
+.login-feedback {
+  margin: 0.75rem 0 0;
+  color: var(--pm-action);
+  font-size: 0.875rem;
+}
+
+.register-link {
+  margin: 1.25rem 0 0;
+  color: var(--pm-muted);
 }

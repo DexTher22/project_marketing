@@ -1,2 +1,78 @@
-/* You can add global styles to this file, and also import other style files */
 @import 'bootstrap';
+
+:root {
+  --pm-canvas: #f4f5ef;
+  --pm-surface: #fff;
+  --pm-ink: #172b23;
+  --pm-muted: #506157;
+  --pm-border: #d9e0d7;
+  --pm-forest: #19372c;
+  --pm-action: #225441;
+  --pm-focus: #24704f;
+  --pm-lime: #ddf594;
+}
+
+.pm-page {
+  min-block-size: 100svh;
+  padding-block-end: 2rem;
+  background: var(--pm-canvas);
+  color: var(--pm-ink);
+}
+
+.pm-shell {
+  max-inline-size: 72rem;
+  margin-inline: auto;
+  padding-inline: clamp(1rem, 4vw, 2.5rem);
+}
+
+.pm-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding-block: 1.5rem;
+}
+
+.pm-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  font-weight: 750;
+}
+
+.pm-mark {
+  display: grid;
+  place-items: center;
+  inline-size: 2.125rem;
+  block-size: 2.125rem;
+  border-radius: 0.5rem;
+  background: var(--pm-forest);
+  color: var(--pm-lime);
+  font-size: 0.75rem;
+  font-weight: 800;
+}
+
+.pm-kicker {
+  margin-block-end: 0.5rem;
+  color: var(--pm-action);
+  font-size: 0.75rem;
+  font-weight: 750;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.pm-link {
+  color: var(--pm-action);
+  font-weight: 650;
+  text-underline-offset: 0.18em;
+}
+
+.pm-link:hover {
+  color: var(--pm-ink);
+}
+
+.pm-page :is(a, button, input):focus-visible {
+  outline: 3px solid var(--pm-focus);
+  outline-offset: 3px;
+}
