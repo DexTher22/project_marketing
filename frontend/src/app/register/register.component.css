@@ -1,4 +1,77 @@
+
 .register-wrapper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.google-logo {
+  display: block;
+  flex: 0 0 20px;
+  width: 20px;
+  height: 20px;
+}
+
+.register-form{
+    width: 400px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.1);
+}
+
+.register-form h2{
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.google_button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  min-height: 46px;
+  margin-bottom: 20px;
+  border: 1px solid #4285f4;
+  border-radius: 12px;
+  background: #f1f5ff;
+  color: #1f3b73;
+  font: inherit;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color .15s ease, box-shadow .15s ease, transform .15s ease;
+}
+
+.google_button:hover {
+  background: #e5edff;
+  box-shadow: 0 4px 12px rgba(66, 133, 244, .2);
+}
+
+.google_button:focus-visible {
+  outline: 3px solid rgba(66, 133, 244, .35);
+  outline-offset: 3px;
+}
+
+.google_button:active {
+  transform: translateY(1px);
+}
+
+.register-form a{
+    text-decoration: none;
+}
+
+.form-group{
+    margin-bottom: 10px;
+}
+
+.form-group label{
+    display: block;
+    margin-bottom: 5px;
+}.register-wrapper{
     display: flex;
     justify-content: center;
     align-items: center;
