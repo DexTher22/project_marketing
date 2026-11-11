@@ -1,1 +1,1 @@
-Regisztráció oldal: e-mail és jelszó megadása, valamint kötelező szerepkör-választás két gombbal: „Cég / hirdető” vagy „Kreatív / influenszer”. A további profiladatok megadása a profil komponensen belül történik.
+Regisztráció oldal: e-mail és jelszó megadása, valamint kötelező szerepkör-választás két gombbal: „Cég / hirdető” vagy „Kreatív / influenszer”. Bejelentkezésnél más home page-re visz, majd a profil komponensen belül kell megadni további információkat.
