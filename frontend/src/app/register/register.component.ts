@@ -12,14 +12,24 @@ import { RouterLink } from '@angular/router';
 export class RegisterComponent {
 
   builder = inject(FormBuilder);
+  readonly roles = [
+    { value: 'advertiser', label: 'Cég / Hirdető' },
+    { value: 'creator', label: 'Kreatív / Influenszer' },
+  ] as const;
 
   registerForm = this.builder.group({
     email: ['',[Validators.required, Validators.email]],
     password: ['',[Validators.required, Validators.minLength(8)]],
-    password_confirm: ['',[Validators.required]]
+    password_confirm: ['',[Validators.required]],
+    role: ['', [Validators.required]]
   });
 
   onSubmit(){
+    if (this.registerForm.invalid) {
+      this.registerForm.markAllAsTouched();
+      return;
+    }
+
     console.log(this.registerForm.value);
   }
 

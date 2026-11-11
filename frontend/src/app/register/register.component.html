@@ -1,70 +1,179 @@
 <main class="register-wrapper">
-  <section class="register-form">
-    <header>
-      <h2>Fiók létrehozása</h2>
-    </header>
-    <button class="google_button" type="button" data-social>
-      <img class="google-logo" src="google.svg" alt="">
-      Regisztráció Google fiókkal
-    </button>
-    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" novalidate>
-      <div class="form-group">
-        <label for="email">E-mail-cím</label>
-        <input
-          class="form-control"
-          id="email"
-          name="email"
-          type="email"
-          autocomplete="email"
-          formControlName="email"
-        >
-        @if (registerForm.get('email')?.touched && registerForm.get('email')?.hasError('required')) {
-          <p class="text-danger">Az e-mail-cím megadása kötelező.</p>
-        } @else if (registerForm.get('email')?.touched && registerForm.get('email')?.hasError('email')) {
-          <p class="text-danger">Adj meg egy érvényes e-mail-címet.</p>
-        }
+  <section class="community-panel" aria-labelledby="community-title">
+    <div class="community-content">
+      <p class="eyebrow">A TE KÖVETKEZŐ NAGY LÉPÉSED</p>
+      <h1 id="community-title">Alkoss.<br><span>Kapcsolódj.</span><br><span class="heading-white">Növekedj.</span></h1>
+      <p class="community-intro">
+        Váltsd valódi együttműködésre a kreativitást.
+      </p>
+
+      <div class="creator-showcase" aria-label="Kreatív közösségünk">
+        <article class="creator-card creator-card-one">
+          <img
+            class="creator-photo creator-photo-one"
+            src="/images/influencers/influencer-1.jpg"
+            alt="Tartalomkészítő videót forgat egy otthoni stúdióban"
+          >
+          <div class="creator-caption"><strong>Horváth Nia (@horvathnia_)</strong><span>Beauty & Lifestyle</span></div>
+        </article>
+        <article class="creator-card creator-card-two">
+          <img
+            class="creator-photo creator-photo-two"
+            src="/images/influencers/influencer-2.jpg"
+            alt="Fitnesz tartalomkészítő szabadtéri edzésen"
+          >
+          <div class="creator-caption"><strong>Varga Bence (@bencevarga_fit)</strong><span>Fitness & Extrém Sport</span></div>
+        </article>
+        <article class="creator-card creator-card-three">
+          <img
+            class="creator-photo creator-photo-three"
+            src="/images/influencers/influencer-3.jpg"
+            alt="Videós tartalomkészítő a stúdiójában"
+          >
+          <div class="creator-caption"><strong>Balogh Dani (@danibalogh.edit)</strong><span>Tech & Gamer Videóvágó</span></div>
+        </article>
+        <span class="showcase-glow" aria-hidden="true"></span>
       </div>
 
-      <div class="form-group">
-        <label for="password">Jelszó</label>
-        <input
-          class="form-control"
-          id="password"
-          name="password"
-          type="password"
-          autocomplete="new-password"
-          formControlName="password"
-        >
-        @if (registerForm.get('password')?.touched && registerForm.get('password')?.hasError('required')) {
-          <p class="text-danger">A jelszó megadása kötelező.</p>
-        } @else if (registerForm.get('password')?.touched && registerForm.get('password')?.hasError('minlength')) {
-          <p class="text-danger">A jelszónak legalább 8 karakter hosszúnak kell lennie.</p>
+      <ul class="benefit-list">
+        <li>
+          <span class="benefit-icon" aria-hidden="true">◎</span>
+          <span><strong>Találd meg a társaid</strong><small>Kapcsolódj alkotókhoz és márkákhoz.</small></span>
+        </li>
+        <li>
+          <span class="benefit-icon" aria-hidden="true">↗</span>
+          <span><strong>Növekedj együtt</strong><small>Építs értékes, hosszú távú partnerségeket.</small></span>
+        </li>
+        <li>
+          <span class="benefit-icon" aria-hidden="true">✳</span>
+          <span><strong>Lásd az eredményeket</strong><small>Kövesd kampányaid hatását egy helyen.</small></span>
+        </li>
+      </ul>
+    </div>
+    <span class="ambient ambient-one" aria-hidden="true"></span>
+    <span class="ambient ambient-two" aria-hidden="true"></span>
+  </section>
+
+  <section class="form-panel" aria-labelledby="register-title">
+    <div class="register-form">
+      <header class="form-header">
+        <h2 id="register-title">Fiók létrehozása</h2>
+        <p class="welcome-text">Csatlakozz a tartalomgyártók és márkák közösségéhez!</p>
+      </header>
+      <div class="role-picker form-group">
+        <p class="role-picker-label">Milyen szerepkörben regisztrálsz?</p>
+        <div class="role-options" role="group" aria-label="Válassz szerepkört">
+          @for (role of roles; track role.value) {
+            <button
+              class="role-option"
+              [class.selected]="registerForm.controls.role.value === role.value"
+              [attr.aria-pressed]="registerForm.controls.role.value === role.value"
+              type="button"
+              (click)="registerForm.controls.role.setValue(role.value)"
+            >
+              @if (role.value === 'advertiser') {
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="18"
+                  height="18"
+                  fill="currentColor"
+                  viewBox="0 0 16 16"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <path
+                    d="M1 15.5a.5.5 0 0 1-.5-.5V1.5A.5.5 0 0 1 1 .999h8a.5.5 0 0 1 .5.5V4h5a.5.5 0 0 1 .5.5V15a.5.5 0 0 1-.5.5zM2 2v12.5h6.5V2zm7.5 3.5v9h4.5v-9zM3 3.5h1.5V5H3zm3 0h1.5V5H6zm-3 3h1.5V8H3zm3 0h1.5V8H6zm-3 3h1.5V11H3zm3 0h1.5V11H6zm3.5 0H11V11H9.5zm2.5 0h1.5V11H12zm-3 2h1.5V13H9.5zm2.5 0h1.5V13H12z"
+                  />
+                </svg>
+              }
+              @if (role.value === 'creator') {
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="18"
+                  height="18"
+                  fill="currentColor"
+                  viewBox="0 0 16 16"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M0 5a2 2 0 0 1 2-2h7.5a2 2 0 0 1 1.983 1.738l3.11-1.382A1 1 0 0 1 16 4.269v7.462a1 1 0 0 1-1.406.913l-3.111-1.382A2 2 0 0 1 9.5 13H2a2 2 0 0 1-2-2zm11.5 5.175 3.5 1.556V4.269l-3.5 1.556zM2 4a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h7.5a1 1 0 0 0 1-1V5a1 1 0 0 0-1-1z"
+                  />
+                </svg>
+              }
+              {{ role.label }}
+            </button>
+          }
+        </div>
+        @if (registerForm.controls.role.touched && registerForm.controls.role.hasError('required')) {
+          <p class="text-danger">A szerepkör kiválasztása kötelező.</p>
         }
       </div>
+      <button class="google_button" type="button" data-social>
+        <img class="google-logo" src="google.svg" alt="">
+        Regisztráció Google fiókkal
+      </button>
+      <div class="form-divider"><span>vagy</span></div>
+      <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" novalidate>
+        <div class="form-group">
+          <label for="email">E-mail-cím</label>
+          <input
+            class="form-control"
+            id="email"
+            name="email"
+            type="email"
+            autocomplete="email"
+            formControlName="email"
+          >
+          @if (registerForm.get('email')?.touched && registerForm.get('email')?.hasError('required')) {
+            <p class="text-danger">Az e-mail-cím megadása kötelező.</p>
+          } @else if (registerForm.get('email')?.touched && registerForm.get('email')?.hasError('email')) {
+            <p class="text-danger">Adj meg egy érvényes e-mail-címet.</p>
+          }
+        </div>
 
-      <div class="form-group">
-        <label for="password_confirm">Jelszó megerősítése</label>
-        <input
-          class="form-control"
-          id="password_confirm"
-          name="password_confirm"
-          type="password"
-          autocomplete="new-password"
-          formControlName="password_confirm"
-        >
-        @if (registerForm.get('password_confirm')?.touched && registerForm.get('password_confirm')?.hasError('required')) {
-          <p class="text-danger">A jelszó megerősítése kötelező.</p>
-        } @else if (registerForm.get('password_confirm')?.touched && !passwordMatch()) {
-          <p class="text-danger">A két jelszó nem egyezik.</p>
-        }
-      </div>
+        <div class="form-group">
+          <label for="password">Jelszó</label>
+          <input
+            class="form-control"
+            id="password"
+            name="password"
+            type="password"
+            autocomplete="new-password"
+            formControlName="password"
+          >
+          @if (registerForm.get('password')?.touched && registerForm.get('password')?.hasError('required')) {
+            <p class="text-danger">A jelszó megadása kötelező.</p>
+          } @else if (registerForm.get('password')?.touched && registerForm.get('password')?.hasError('minlength')) {
+            <p class="text-danger">A jelszónak legalább 8 karakter hosszúnak kell lennie.</p>
+          }
+        </div>
 
-      <button class="btn btn-primary w-100" type="submit">Regisztráció</button>
-    </form>
+        <div class="form-group">
+          <label for="password_confirm">Jelszó megerősítése</label>
+          <input
+            class="form-control"
+            id="password_confirm"
+            name="password_confirm"
+            type="password"
+            autocomplete="new-password"
+            formControlName="password_confirm"
+          >
+          @if (registerForm.get('password_confirm')?.touched && registerForm.get('password_confirm')?.hasError('required')) {
+            <p class="text-danger">A jelszó megerősítése kötelező.</p>
+          } @else if (registerForm.get('password_confirm')?.touched && !passwordMatch()) {
+            <p class="text-danger">A két jelszó nem egyezik.</p>
+          }
+        </div>
 
-    <p class="text-center mt-3">
-      Van már fiókod?
-      <a routerLink="/login">Jelentkezz be</a>
-    </p>
+        <button class="submit-button" type="submit">Regisztráció</button>
+      </form>
+
+      <p class="login-prompt">
+        Van már fiókod?
+        <a routerLink="/login">Jelentkezz be</a>
+      </p>
+    </div>
   </section>
 </main>
