@@ -1,0 +1,154 @@
+<div class="pm-page profile-page">
+  <div class="pm-shell">
+    <header class="pm-header">
+      <a class="pm-brand text-decoration-none" routerLink="/">
+        <span class="pm-mark" aria-hidden="true">PM</span>
+        Project Marketing
+      </a>
+      <a class="pm-link" routerLink="/">Kezdőlap</a>
+    </header>
+
+    <main class="profile-content" aria-labelledby="profile-heading">
+      <div class="profile-title-row">
+        <div>
+          <p class="pm-kicker">Saját adatlap</p>
+          <h1 id="profile-heading">Profilod</h1>
+        </div>
+        @if (!editing) {
+          <button class="profile-button profile-button-primary" type="button" (click)="editProfile()">
+            Adatlap szerkesztése
+          </button>
+        }
+      </div>
+
+      <section class="profile-card" aria-label="Profiladatok">
+        <div class="profile-summary">
+          @if (profile.profilePicture) {
+            <img class="profile-avatar" [src]="profile.profilePicture" alt="Profilkép">
+          } @else {
+            <div class="profile-avatar profile-avatar-placeholder" aria-hidden="true">
+              {{ profile.name ? profile.name.charAt(0).toUpperCase() : 'P' }}
+            </div>
+          }
+          <div class="profile-identity">
+            <h2>{{ profile.name || 'Új felhasználó' }}</h2>
+            <p class="profile-username">{{ profile.username || '@felhasznalonev' }}</p>
+            <span class="profile-role">Tartalomgyártó</span>
+          </div>
+        </div>
+
+        @if (editing) {
+          <form class="profile-form" [formGroup]="profileForm" (ngSubmit)="saveProfile()">
+            <div class="profile-field">
+              <label for="profile-picture">Profilkép URL-je</label>
+              <input id="profile-picture" class="form-control" type="url" formControlName="profilePicture"
+                placeholder="https://...">
+            </div>
+            <div class="profile-field">
+              <label for="profile-name">Név</label>
+              <input id="profile-name" class="form-control" type="text" formControlName="name" autocomplete="name">
+            </div>
+            <div class="profile-field">
+              <label for="profile-username">Felhasználónév</label>
+              <input id="profile-username" class="form-control" type="text" formControlName="username"
+                autocomplete="nickname" placeholder="@felhasznalonev">
+            </div>
+            <div class="profile-field profile-field-wide">
+              <label for="profile-bio">Bemutatkozás</label>
+              <textarea id="profile-bio" class="form-control" rows="4" formControlName="bio"></textarea>
+            </div>
+            <div class="profile-field">
+              <label for="profile-location">Lakhely vagy működési terület</label>
+              <input id="profile-location" class="form-control" type="text" formControlName="location"
+                autocomplete="address-level2">
+            </div>
+            <div class="profile-field">
+              <label for="profile-phone">Telefonszám</label>
+              <input id="profile-phone" class="form-control" type="tel" formControlName="phone" autocomplete="tel">
+            </div>
+            <div class="profile-field profile-field-wide">
+              <label for="profile-website">Weboldal</label>
+              <input id="profile-website" class="form-control" type="url" formControlName="website"
+                placeholder="https://...">
+            </div>
+
+            <fieldset class="profile-field profile-field-wide social-fields" formGroupName="socials">
+              <legend>Közösségi média</legend>
+              @for (social of socialFields; track social.control) {
+                <div class="profile-field">
+                  <label [for]="'social-' + social.control">{{ social.label }}</label>
+                  <input class="form-control" [id]="'social-' + social.control" type="url"
+                    [formControlName]="social.control" placeholder="https://...">
+                </div>
+              }
+            </fieldset>
+
+            <div class="profile-field profile-field-wide">
+              <label for="profile-materials">Referenciák és médiafájlok</label>
+              <input id="profile-materials" class="form-control" type="file" multiple
+                accept="image/*,video/*,.pdf" (change)="addMaterials($event)">
+              <p class="profile-note">A kiválasztott fájlnevek ezen a böngészőoldalon jelennek meg; feltöltéshez szerverkapcsolat szükséges.</p>
+              @if (materials.length) {
+                <ul class="material-list">
+                  @for (material of materials; track $index) {
+                    <li>{{ material }}</li>
+                  }
+                </ul>
+              }
+            </div>
+
+            <div class="profile-actions profile-field-wide">
+              <button class="profile-button profile-button-primary" type="submit">Mentés</button>
+              <button class="profile-button profile-button-secondary" type="button" (click)="cancelEdit()">
+                Mégse
+              </button>
+            </div>
+          </form>
+        } @else {
+          <div class="profile-details">
+            <section class="profile-about" aria-labelledby="about-heading">
+              <h3 id="about-heading">Bemutatkozás</h3>
+              <p>{{ profile.bio || 'Még nincs bemutatkozás megadva.' }}</p>
+            </section>
+
+            <dl class="profile-facts">
+              <div><dt>Lakhely / működési terület</dt><dd>{{ profile.location || 'Nincs megadva' }}</dd></div>
+              <div><dt>Telefonszám</dt><dd>{{ profile.phone || 'Nincs megadva' }}</dd></div>
+              <div><dt>Weboldal</dt><dd>{{ profile.website || 'Nincs megadva' }}</dd></div>
+            </dl>
+
+            <section class="profile-socials" aria-labelledby="social-heading">
+              <h3 id="social-heading">Közösségi média</h3>
+              <ul>
+                @for (social of socialFields; track social.control) {
+                  <li><span>{{ social.label }}</span><span>{{ profile.socials[social.control] || 'Nincs megadva' }}</span></li>
+                }
+              </ul>
+            </section>
+
+            <section class="profile-materials" aria-labelledby="materials-heading">
+              <div>
+                <h3 id="materials-heading">Referenciák és médiafájlok</h3>
+                <p>Mutasd be a munkáidat és oszd meg a releváns anyagaidat.</p>
+              </div>
+              @if (materials.length) {
+                <ul class="material-list">
+                  @for (material of materials; track $index) {
+                    <li>{{ material }}</li>
+                  }
+                </ul>
+              } @else {
+                <p class="profile-empty">Még nem adtál hozzá referenciát vagy médiafájlt.</p>
+              }
+            </section>
+          </div>
+        }
+
+        @if (!hasProfileDetails && !editing) {
+          <p class="profile-note profile-empty-prompt">Töltsd ki az adatlapodat, hogy mások jobban megismerhessenek.</p>
+        }
+        <p class="profile-feedback" role="status">{{ feedback }}</p>
+      </section>
+    </main>
+  </div>
+</div>

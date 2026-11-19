@@ -123,7 +123,6 @@
             id="email"
             name="email"
             type="email"
-            autocomplete="email"
             formControlName="email"
           >
           @if (registerForm.get('email')?.touched && registerForm.get('email')?.hasError('required')) {
@@ -140,7 +139,6 @@
             id="password"
             name="password"
             type="password"
-            autocomplete="new-password"
             formControlName="password"
           >
           @if (registerForm.get('password')?.touched && registerForm.get('password')?.hasError('required')) {
@@ -157,7 +155,6 @@
             id="password_confirm"
             name="password_confirm"
             type="password"
-            autocomplete="new-password"
             formControlName="password_confirm"
           >
           @if (registerForm.get('password_confirm')?.touched && registerForm.get('password_confirm')?.hasError('required')) {
