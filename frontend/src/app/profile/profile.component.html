@@ -128,7 +128,7 @@
 
             <section class="profile-materials" aria-labelledby="materials-heading">
               <div>
-                <h3 id="materials-heading">Referenciák és médiafájlok</h3>
+                <h3 id="materials-heading">Referenciák:</h3>
                 <p>Mutasd be a munkáidat és oszd meg a releváns anyagaidat.</p>
               </div>
               @if (materials.length) {
@@ -142,10 +142,6 @@
               }
             </section>
           </div>
-        }
-
-        @if (!hasProfileDetails && !editing) {
-          <p class="profile-note profile-empty-prompt">Töltsd ki az adatlapodat, hogy mások jobban megismerhessenek.</p>
         }
         <p class="profile-feedback" role="status">{{ feedback }}</p>
       </section>
