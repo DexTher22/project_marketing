@@ -42,15 +42,10 @@
 }
 
 .pm-mark {
-  display: grid;
-  place-items: center;
+  display: block;
   inline-size: 2.125rem;
   block-size: 2.125rem;
-  border-radius: 0.5rem;
-  background: var(--pm-forest);
-  color: var(--pm-lime);
-  font-size: 0.75rem;
-  font-weight: 800;
+  object-fit: cover;
 }
 
 .pm-kicker {

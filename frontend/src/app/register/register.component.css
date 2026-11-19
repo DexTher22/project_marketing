@@ -48,14 +48,11 @@
 }
 
 .brand-icon {
-  display: inline-grid;
+  display: block;
+  flex: 0 0 30px;
   width: 30px;
   height: 30px;
-  place-items: center;
-  border-radius: 9px;
-  background: linear-gradient(145deg, #10b7f4, #873bff);
-  color: #fff;
-  font-size: 18px;
+  object-fit: cover;
 }
 
 .eyebrow {
