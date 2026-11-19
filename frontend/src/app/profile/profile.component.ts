@@ -52,6 +52,7 @@ export class ProfileComponent {
   protected materials: string[] = [];
   protected editing = false;
   protected feedback = '';
+  protected materialError = '';
 
   protected get hasProfileDetails(): boolean {
     return Boolean(this.profile.name || this.profile.username || this.profile.bio);
@@ -80,7 +81,16 @@ export class ProfileComponent {
       return;
     }
 
-    this.materials = [...this.materials, ...Array.from(input.files, (file) => file.name)];
+    const files = Array.from(input.files);
+    const acceptedFiles = files.filter((file) => {
+      const type = file.type.toLowerCase();
+      return type.startsWith('image/') || type.startsWith('video/');
+    });
+
+    this.materials = [...this.materials, ...acceptedFiles.map((file) => file.name)];
+    this.materialError = acceptedFiles.length === files.length
+      ? ''
+      : 'Referenciaként csak kép- és videófájlokat adhatsz hozzá.';
     input.value = '';
   }
 }

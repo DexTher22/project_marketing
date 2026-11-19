@@ -41,4 +41,26 @@ describe('ProfileComponent', () => {
     expect(compiled.querySelector('.profile-identity h2')?.textContent?.trim()).toBe('Teszt Elek');
     expect(compiled.querySelector('.profile-username')?.textContent?.trim()).toBe('@tesztelek');
   });
+
+  it('should accept image and video references and reject other files', () => {
+    const compiled = fixture.nativeElement as HTMLElement;
+    compiled.querySelector<HTMLButtonElement>('.profile-button-primary')?.click();
+    fixture.detectChanges();
+
+    const fileInput = compiled.querySelector<HTMLInputElement>('#profile-materials')!;
+    const files = [
+      new File(['image'], 'reference.png', { type: 'image/png' }),
+      new File(['video'], 'campaign.mp4', { type: 'video/mp4' }),
+      new File(['document'], 'brief.pdf', { type: 'application/pdf' }),
+    ];
+    Object.defineProperty(fileInput, 'files', { value: files });
+    fileInput.dispatchEvent(new Event('change'));
+    fixture.detectChanges();
+
+    const materials = Array.from(compiled.querySelectorAll('.material-list li'))
+      .map((item) => item.textContent?.trim());
+    expect(materials).toEqual(['reference.png', 'campaign.mp4']);
+    expect(compiled.querySelector('[role="alert"]')?.textContent)
+      .toContain('csak kép- és videófájlokat');
+  });
 });

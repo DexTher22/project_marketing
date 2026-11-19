@@ -142,13 +142,24 @@
 
         <div class="form-group">
           <label for="password">Jelszó</label>
-          <input
-            class="form-control"
-            id="password"
-            name="password"
-            type="password"
-            formControlName="password"
-          >
+          <div class="password-field">
+            <input
+              class="form-control"
+              id="password"
+              name="password"
+              [type]="passwordVisible ? 'text' : 'password'"
+              formControlName="password"
+            >
+            <button
+              class="password-toggle"
+              type="button"
+              aria-controls="password"
+              [attr.aria-label]="passwordVisible ? 'Jelszó elrejtése' : 'Jelszó mutatása'"
+              (click)="passwordVisible = !passwordVisible"
+            >
+              {{ passwordVisible ? 'Elrejtés' : 'Mutatás' }}
+            </button>
+          </div>
           @if (registerForm.get('password')?.touched && registerForm.get('password')?.hasError('required')) {
             <p class="text-danger">A jelszó megadása kötelező.</p>
           } @else if (registerForm.get('password')?.touched && registerForm.get('password')?.hasError('minlength')) {
@@ -158,17 +169,49 @@
 
         <div class="form-group">
           <label for="password_confirm">Jelszó megerősítése</label>
-          <input
-            class="form-control"
-            id="password_confirm"
-            name="password_confirm"
-            type="password"
-            formControlName="password_confirm"
-          >
+          <div class="password-field">
+            <input
+              class="form-control"
+              id="password_confirm"
+              name="password_confirm"
+              [type]="passwordConfirmVisible ? 'text' : 'password'"
+              formControlName="password_confirm"
+            >
+            <button
+              class="password-toggle"
+              type="button"
+              aria-controls="password_confirm"
+              [attr.aria-label]="passwordConfirmVisible ? 'Jelszó elrejtése' : 'Jelszó mutatása'"
+              (click)="passwordConfirmVisible = !passwordConfirmVisible"
+            >
+              {{ passwordConfirmVisible ? 'Elrejtés' : 'Mutatás' }}
+            </button>
+          </div>
           @if (registerForm.get('password_confirm')?.touched && registerForm.get('password_confirm')?.hasError('required')) {
             <p class="text-danger">A jelszó megerősítése kötelező.</p>
           } @else if (registerForm.get('password_confirm')?.touched && !passwordMatch()) {
             <p class="text-danger">A két jelszó nem egyezik.</p>
+          }
+        </div>
+
+        <div class="form-group privacy-consent">
+          <label for="privacy-accepted">
+            <input
+              class="form-check-input"
+              id="privacy-accepted"
+              type="checkbox"
+              formControlName="privacyAccepted"
+              required
+              [attr.aria-invalid]="registerForm.controls.privacyAccepted.touched && registerForm.controls.privacyAccepted.invalid ? 'true' : null"
+              [attr.aria-describedby]="registerForm.controls.privacyAccepted.touched && registerForm.controls.privacyAccepted.invalid ? 'privacy-consent-error' : null"
+            >
+            <span>Elolvastam és elfogadom az</span>
+          </label>
+          <a routerLink="/aszf">adatkezelési tájékoztatót.</a>
+          @if (registerForm.controls.privacyAccepted.touched && registerForm.controls.privacyAccepted.hasError('required')) {
+            <p class="text-danger" id="privacy-consent-error">
+              Az adatkezelési tájékoztató elfogadása kötelező a regisztrációhoz.
+            </p>
           }
         </div>
 

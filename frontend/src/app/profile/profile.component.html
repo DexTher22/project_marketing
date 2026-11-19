@@ -86,8 +86,11 @@
             <div class="profile-field profile-field-wide">
               <label for="profile-materials">Referenciák és médiafájlok</label>
               <input id="profile-materials" class="form-control" type="file" multiple
-                accept="image/*,video/*,.pdf" (change)="addMaterials($event)">
-              <p class="profile-note">A kiválasztott fájlnevek ezen a böngészőoldalon jelennek meg; feltöltéshez szerverkapcsolat szükséges.</p>
+                accept="image/*,video/*" (change)="addMaterials($event)">
+              <p class="profile-note">Kép- és videófájlokat adhatsz hozzá. A fájlnevek ezen az oldalon jelennek meg; szerveres feltöltéshez backend szükséges.</p>
+              @if (materialError) {
+                <p class="profile-upload-error" role="alert">{{ materialError }}</p>
+              }
               @if (materials.length) {
                 <ul class="material-list">
                   @for (material of materials; track $index) {

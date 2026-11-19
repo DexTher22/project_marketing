@@ -45,4 +45,36 @@ describe('RegisterComponent', () => {
     expect(component.registerForm.controls.role.value).toBe('advertiser');
     expect(buttons[0].getAttribute('aria-pressed')).toBe('true');
   });
+
+  it('requires acceptance of the privacy notice', () => {
+    const consent = component.registerForm.controls.privacyAccepted;
+
+    expect(consent.invalid).toBeTrue();
+    consent.setValue(true);
+    expect(consent.valid).toBeTrue();
+  });
+
+  it('lets the user reveal and hide both password fields', () => {
+    const nativeElement = fixture.nativeElement as HTMLElement;
+    const password = nativeElement.querySelector<HTMLInputElement>('#password')!;
+    const passwordConfirm = nativeElement.querySelector<HTMLInputElement>('#password_confirm')!;
+    const toggles = nativeElement.querySelectorAll<HTMLButtonElement>('.password-toggle');
+
+    expect(password.type).toBe('password');
+    expect(passwordConfirm.type).toBe('password');
+
+    toggles[0].click();
+    toggles[1].click();
+    fixture.detectChanges();
+
+    expect(password.type).toBe('text');
+    expect(passwordConfirm.type).toBe('text');
+
+    toggles[0].click();
+    toggles[1].click();
+    fixture.detectChanges();
+
+    expect(password.type).toBe('password');
+    expect(passwordConfirm.type).toBe('password');
+  });
 });

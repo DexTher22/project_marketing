@@ -12,6 +12,8 @@ import { RouterLink } from '@angular/router';
 export class RegisterComponent {
 
   builder = inject(FormBuilder);
+  protected passwordVisible = false;
+  protected passwordConfirmVisible = false;
   readonly roles = [
     { value: 'advertiser', label: 'Cég / Hirdető' },
     { value: 'creator', label: 'Kreatív / Influenszer' },
@@ -21,7 +23,8 @@ export class RegisterComponent {
     email: ['',[Validators.required, Validators.email]],
     password: ['',[Validators.required, Validators.minLength(8)]],
     password_confirm: ['',[Validators.required]],
-    role: ['', [Validators.required]]
+    role: ['', [Validators.required]],
+    privacyAccepted: this.builder.nonNullable.control(false, Validators.requiredTrue),
   });
 
   onSubmit(){

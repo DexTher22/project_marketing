@@ -320,7 +320,9 @@
 
 .role-option:focus-visible,
 .google_button:focus-visible,
-.submit-button:focus-visible {
+.submit-button:focus-visible,
+.password-toggle:focus-visible,
+.privacy-consent a:focus-visible {
   outline: 3px solid rgba(155, 110, 255, .45);
   outline-offset: 3px;
 }
@@ -399,6 +401,90 @@
 
 .register-form .form-control::placeholder {
   color: #8993a5;
+}
+
+.password-field {
+  position: relative;
+}
+
+.password-field .form-control {
+  padding-right: 86px;
+}
+
+.password-toggle {
+  position: absolute;
+  inset-block: 4px;
+  inset-inline-end: 4px;
+  padding-inline: 8px;
+  border: 0;
+  border-radius: 6px;
+  background: transparent;
+  color: #9dc9ff;
+  font: inherit;
+  font-size: 11px;
+  font-weight: 650;
+  cursor: pointer;
+}
+
+.password-toggle:hover {
+  background: #263248;
+}
+
+.privacy-consent {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  column-gap: 4px;
+  row-gap: 5px;
+}
+
+.privacy-consent label {
+  display: flex;
+  align-items: flex-start;
+  gap: 9px;
+  margin: 0;
+  color: #dce1ed;
+  font-size: 12px;
+  line-height: 1.5;
+  cursor: pointer;
+}
+
+.privacy-consent a {
+  color: #70aaff;
+  font-size: 12px;
+  line-height: 1.5;
+  text-underline-offset: 2px;
+}
+
+.privacy-consent a:hover {
+  color: #a3c8ff;
+}
+
+.privacy-consent .form-check-input {
+  flex: 0 0 auto;
+  width: 16px;
+  height: 16px;
+  margin: 2px 0 0;
+  border-color: #56627a;
+  background-color: #151f2f;
+}
+
+.privacy-consent .form-check-input:checked {
+  border-color: #8e55ff;
+  background-color: #8e55ff;
+}
+
+.privacy-consent .form-check-input:focus {
+  border-color: #9862ff;
+  box-shadow: 0 0 0 3px rgba(137, 79, 255, .2);
+}
+
+.privacy-consent .text-danger {
+  flex-basis: 100%;
+}
+
+.privacy-consent .form-check-input[aria-invalid='true'] {
+  border-color: #e16d7a;
 }
 
 .text-danger {

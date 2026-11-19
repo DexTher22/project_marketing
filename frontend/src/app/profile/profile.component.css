@@ -193,6 +193,12 @@
   font-size: 0.875rem;
 }
 
+.profile-upload-error {
+  margin: 0;
+  color: #ff9aa5;
+  font-size: 0.875rem;
+}
+
 .profile-actions {
   justify-content: flex-start;
 }
