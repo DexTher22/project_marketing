@@ -1,0 +1,24 @@
+<div class="pm-page dashboard-page">
+  <div class="pm-shell">
+    <header class="pm-header dashboard-header">
+      <a class="pm-brand" routerLink="/home">
+        <img class="pm-mark" src="/project-marketing-icon.svg" alt="">
+        Project Marketing
+      </a>
+      <nav aria-label="Munkaterület">
+        <ul class="dashboard-nav">
+          <li>
+            <a routerLink="/home" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"
+              ariaCurrentWhenActive="page">Főoldal</a>
+          </li>
+          <li><a routerLink="/profile">Adatlap</a></li>
+          <li class="preview-exit"><a routerLink="/login">Kilépés a mintából</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <router-outlet></router-outlet>
+    </main>
+  </div>
+</div>
