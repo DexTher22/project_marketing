@@ -1,3 +1,4 @@
+Még felvetések: 
 ??? az advertiserek lehetnek specializálva? pl. magánszemély, cég stb.  
 Mert akkor a creator_specializations lehet user_specializations és creator_id helyett user_id-t használ.  
 Ha nagyon akarunk hírlevelet elég users-be berakni egy mezőt, de amúgy felesleges az egész tábla
