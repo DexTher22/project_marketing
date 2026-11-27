@@ -1,0 +1,27 @@
+<section class="widget" aria-labelledby="messages-heading">
+  <header class="widget-heading">
+    <h2 id="messages-heading">Üzenetek</h2>
+    @if (unreadCount > 0) {
+      <span class="widget-badge widget-badge-accent">{{ unreadCount }} olvasatlan</span>
+    }
+  </header>
+  <ul class="widget-list">
+    @for (message of messages; track message.id) {
+      <li class="widget-row">
+        <span class="widget-avatar" aria-hidden="true">{{ message.initial }}</span>
+        <div>
+          <h3 class="message-sender">
+            {{ message.sender }}
+            @if (message.unread) {
+              <span class="unread-dot" aria-hidden="true"></span>
+              <span class="visually-hidden">Olvasatlan üzenet</span>
+            }
+          </h3>
+          <p class="widget-secondary">{{ message.text }}</p>
+        </div>
+      </li>
+    } @empty {
+      <li class="widget-secondary">Még nincs üzeneted.</li>
+    }
+  </ul>
+</section>

@@ -1,0 +1,19 @@
+<section class="widget" aria-labelledby="active-projects-heading">
+  <h2 id="active-projects-heading">Aktív projektek</h2>
+  <ul class="widget-list">
+    @for (project of projects; track project.id) {
+      <li class="widget-row">
+        <span class="widget-thumbnail" [class]="project.thumbnail" aria-hidden="true"></span>
+        <div>
+          <h3>{{ project.title }}</h3>
+          <span class="widget-badge">{{ project.status }}</span>
+        </div>
+      </li>
+    } @empty {
+      <li class="widget-secondary">Jelenleg nincs aktív projekted.</li>
+    }
+  </ul>
+  @if (showProjectsLink) {
+    <a class="widget-link" routerLink="/home/projects">Összes projekt <span aria-hidden="true">→</span></a>
+  }
+</section>

@@ -1,0 +1,16 @@
+<section class="widget" aria-labelledby="listings-heading">
+  <h2 id="listings-heading">Új hirdetések</h2>
+  <ul class="widget-list">
+    @for (listing of listings; track listing.id) {
+      <li class="widget-row">
+        <span class="widget-thumbnail" [class]="listing.thumbnail" aria-hidden="true"></span>
+        <div>
+          <h3>{{ listing.title }}</h3>
+          <p class="widget-secondary">{{ listing.location }}</p>
+        </div>
+      </li>
+    } @empty {
+      <li class="widget-secondary">Jelenleg nincs új hirdetés.</li>
+    }
+  </ul>
+</section>
